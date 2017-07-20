@@ -20,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.view.backgroundColor = [UIColor redColor];
+    // >>>>>>> init Model >>>>>>
     LSWebObj *webObj = [LSWebObj new];
     webObj.title = @"Test Title";
     webObj.url = @"https://www.baidu.com";

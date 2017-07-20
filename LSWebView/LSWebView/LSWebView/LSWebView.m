@@ -71,25 +71,18 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    if(webView == self.uiWebView) {
-        [self.delegate lswebViewDidStartLoad:self];
-        
-    }
+    webView == self.uiWebView ? [self.delegate lswebViewDidStartLoad:self] : nil;
 }
 
 #pragma mark 监听请求
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-    
     if(webView == self.uiWebView) {
-        
         if(![self externalAppRequiredToOpenURL:request.URL]) {
             self.uiWebViewCurrentURL = request.URL;
             self.uiWebViewIsLoading = YES;
-            
             [self fakeProgressViewStartLoading];
             
-            
-            //back delegate
+            // back delegate
             [self.delegate lswebView:self shouldStartLoadWithURL:request.URL];
             return YES;
         }
@@ -101,18 +94,14 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
     return NO;
 }
 
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     if(webView == self.uiWebView) {
         if(!self.uiWebView.isLoading) {
             self.uiWebViewIsLoading = NO;
-            
             [self fakeProgressBarStopLoading];
         }
-        
         //back delegate
         [self.delegate lswebView:self didFinishLoadingURL:self.uiWebView.request.URL];
-        
     }
 }
 
@@ -120,11 +109,9 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
     if(webView == self.uiWebView) {
         if(!self.uiWebView.isLoading) {
             self.uiWebViewIsLoading = NO;
-            
             [self fakeProgressBarStopLoading];
         }
-        
-        //back delegate
+        // back delegate
         [self.delegate lswebView:self didFailToLoadURL:self.uiWebView.request.URL error:error];
     }
 }
@@ -135,16 +122,11 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
     if(webView == self.wkWebView) {
         //back delegate
         [self.delegate lswebViewDidStartLoad:self];
-        
-        //        WKNavigationActionPolicy(WKNavigationActionPolicyAllow);
-        
     }
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-    
     if(webView == self.wkWebView) {
-        
         //back delegate
         [self.delegate lswebView:self didFinishLoadingURL:self.wkWebView.URL];
     }
@@ -152,17 +134,13 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation
       withError:(NSError *)error {
-    if(webView == self.wkWebView) {
-        //back delegate
-        [self.delegate lswebView:self didFailToLoadURL:self.wkWebView.URL error:error];
-    }
-    
+    webView == self.wkWebView ? [self.delegate lswebView:self didFailToLoadURL:self.wkWebView.URL error:error] : nil;
 }
 
 - (void)webView:(WKWebView *)webView didFailNavigation:(WKNavigation *)navigation
       withError:(NSError *)error {
     if(webView == self.wkWebView) {
-        //back delegate
+        // back delegate
         [self.delegate lswebView:self didFailToLoadURL:self.wkWebView.URL error:error];
     }
 }
@@ -191,6 +169,7 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 {
     //back delegate
     [self.delegate lswebView:self shouldStartLoadWithURL:request.URL];
+    
     return YES;
 }
 
@@ -240,7 +219,6 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
     if(self.fakeProgressTimer) {
         [self.fakeProgressTimer invalidate];
     }
-    
     if(self.progressView) {
         [self.progressView setProgress:1.0f animated:YES];
         [UIView animateWithDuration:0.3f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
@@ -264,10 +242,11 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 #pragma mark - External App Support
 
 - (BOOL)externalAppRequiredToOpenURL:(NSURL *)URL {
-    
-    //若需要限制只允许某些前缀的scheme通过请求，则取消下述注释，并在数组内添加自己需要放行的前缀
-    //    NSSet *validSchemes = [NSSet setWithArray:@[@"http", @"https",@"file"]];
-    //    return ![validSchemes containsObject:URL.scheme];
+    /*
+     若需要限制只允许某些前缀的scheme通过请求，则取消下述注释，并在数组内添加自己需要放行的前缀
+     NSSet *validSchemes = [NSSet setWithArray:@[@"http", @"https",@"file"]];
+     return ![validSchemes containsObject:URL.scheme];
+     */
     
     return !URL;
 }
@@ -310,9 +289,7 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
         else {
             self.uiWebView = [[UIWebView alloc] init];
         }
-        
         self.backgroundColor = [UIColor redColor];
-        
         if(self.wkWebView) {
             [self.wkWebView setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
             [self.wkWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
@@ -336,12 +313,11 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
             self.uiWebView.scrollView.bounces = NO;
             [self addSubview:self.uiWebView];
         }
-        
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         [self.progressView setTrackTintColor:[UIColor colorWithWhite:1.0f alpha:0.0f]];
         [self.progressView setFrame:CGRectMake(0, 0, self.frame.size.width, self.progressView.frame.size.height)];
         
-        // 设置进度条颜色
+        // set progress bar Color
         [self setTintColor:[UIColor colorWithRed:0.400 green:0.863 blue:0.133 alpha:1.000]];
         [self addSubview:self.progressView];
     }
