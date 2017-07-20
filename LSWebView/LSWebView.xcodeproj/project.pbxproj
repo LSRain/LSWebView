@@ -12,6 +12,7 @@
 		51A3702B1F205EE500C9BF7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A3702A1F205EE500C9BF7D /* ViewController.m */; };
 		51A370301F205EE500C9BF7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A3702F1F205EE500C9BF7D /* Assets.xcassets */; };
 		51A370331F205EE500C9BF7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A370311F205EE500C9BF7D /* LaunchScreen.storyboard */; };
+		51A3703D1F20609500C9BF7D /* LSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A3703C1F20609500C9BF7D /* LSWebView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,8 @@
 		51A3702F1F205EE500C9BF7D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51A370321F205EE500C9BF7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51A370341F205EE500C9BF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51A3703B1F20609500C9BF7D /* LSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebView.h; sourceTree = "<group>"; };
+		51A3703C1F20609500C9BF7D /* LSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSWebView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +59,7 @@
 		51A370221F205EE500C9BF7D /* LSWebView */ = {
 			isa = PBXGroup;
 			children = (
+				51A3703A1F20605F00C9BF7D /* LSWebView */,
 				51A370261F205EE500C9BF7D /* AppDelegate.h */,
 				51A370271F205EE500C9BF7D /* AppDelegate.m */,
 				51A370291F205EE500C9BF7D /* ViewController.h */,
@@ -74,6 +78,15 @@
 				51A370241F205EE500C9BF7D /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		51A3703A1F20605F00C9BF7D /* LSWebView */ = {
+			isa = PBXGroup;
+			children = (
+				51A3703B1F20609500C9BF7D /* LSWebView.h */,
+				51A3703C1F20609500C9BF7D /* LSWebView.m */,
+			);
+			path = LSWebView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,6 +162,7 @@
 			files = (
 				51A3702B1F205EE500C9BF7D /* ViewController.m in Sources */,
 				51A370281F205EE500C9BF7D /* AppDelegate.m in Sources */,
+				51A3703D1F20609500C9BF7D /* LSWebView.m in Sources */,
 				51A370251F205EE500C9BF7D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,7 +278,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LSWebView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsrain.LSWebView.LSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -276,7 +290,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = LSWebView/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lsrain.LSWebView.LSWebView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
