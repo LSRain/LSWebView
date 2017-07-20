@@ -13,6 +13,7 @@
 		51A370301F205EE500C9BF7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51A3702F1F205EE500C9BF7D /* Assets.xcassets */; };
 		51A370331F205EE500C9BF7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A370311F205EE500C9BF7D /* LaunchScreen.storyboard */; };
 		51A3703D1F20609500C9BF7D /* LSWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A3703C1F20609500C9BF7D /* LSWebView.m */; };
+		51A370401F20861A00C9BF7D /* LSWebObj.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A3703F1F20861A00C9BF7D /* LSWebObj.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,8 @@
 		51A370341F205EE500C9BF7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A3703B1F20609500C9BF7D /* LSWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebView.h; sourceTree = "<group>"; };
 		51A3703C1F20609500C9BF7D /* LSWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSWebView.m; sourceTree = "<group>"; };
+		51A3703E1F20861A00C9BF7D /* LSWebObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebObj.h; sourceTree = "<group>"; };
+		51A3703F1F20861A00C9BF7D /* LSWebObj.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSWebObj.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 			children = (
 				51A3703B1F20609500C9BF7D /* LSWebView.h */,
 				51A3703C1F20609500C9BF7D /* LSWebView.m */,
+				51A3703E1F20861A00C9BF7D /* LSWebObj.h */,
+				51A3703F1F20861A00C9BF7D /* LSWebObj.m */,
 			);
 			path = LSWebView;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A370401F20861A00C9BF7D /* LSWebObj.m in Sources */,
 				51A3702B1F205EE500C9BF7D /* ViewController.m in Sources */,
 				51A370281F205EE500C9BF7D /* AppDelegate.m in Sources */,
 				51A3703D1F20609500C9BF7D /* LSWebView.m in Sources */,
@@ -316,6 +322,7 @@
 				51A370391F205EE500C9BF7D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
