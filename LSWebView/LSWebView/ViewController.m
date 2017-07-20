@@ -7,8 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "LSWebObj.h"
+#import "LSWebView.h"
 
-@interface ViewController ()
+@interface ViewController ()<LSWebViewDelegate>
 
 @end
 
@@ -19,8 +21,34 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     self.view.backgroundColor = [UIColor redColor];
+    LSWebObj *webObj = [LSWebObj new];
+    webObj.title = @"Test Title";
+    webObj.url = @"https://www.baidu.com";
+    self.title = webObj.title;
+    
+    LSWebView *my = [[LSWebView alloc]initWithFrame:self.view.bounds];
+    [my loadURLString:webObj.url];
+    [self.view addSubview:my];
+    my.delegate = self;
 }
 
+#pragma mark - this is LSWebViewDelegate
+
+- (void)lswebViewDidStartLoad:(LSWebView *)webview{
+    NSLog(@"页面开始加载");
+}
+
+- (void)lswebView:(LSWebView *)webview shouldStartLoadWithURL:(NSURL *)URL{
+    NSLog(@"截取到URL：%@",URL);
+}
+
+- (void)lswebView:(LSWebView *)webview didFinishLoadingURL:(NSURL *)URL{
+    NSLog(@"页面加载完成");
+}
+
+- (void)lswebView:(LSWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
+    NSLog(@"加载出现错误");
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
