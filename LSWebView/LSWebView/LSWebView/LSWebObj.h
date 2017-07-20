@@ -10,7 +10,9 @@
 
 @interface LSWebObj : NSObject
 
+/// URL
 @property (nonatomic, copy) NSString *url;
+/// OBJ Title
 @property (nonatomic, copy) NSString *title;
 
 @end

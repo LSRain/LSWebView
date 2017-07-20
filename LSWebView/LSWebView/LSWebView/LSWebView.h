@@ -18,10 +18,39 @@
 @class LSWebView;
 @protocol LSWebViewDelegate <NSObject>
 @optional
+
+/**
+ page loaded delegate
+
+ @param webview webView
+ @param URL url
+ */
 - (void)lswebView:(LSWebView *)webview didFinishLoadingURL:(NSURL *)URL;
+
+/**
+ Loading error delegate
+
+ @param webview webView
+ @param URL url
+ @param error error Message
+ */
 - (void)lswebView:(LSWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error;
+
+/**
+ Intercept URL delegate
+
+ @param webview webView
+ @param URL url
+ */
 - (void)lswebView:(LSWebView *)webview shouldStartLoadWithURL:(NSURL *)URL;
+
+/**
+ start loading delegate
+
+ @param webview webView
+ */
 - (void)lswebViewDidStartLoad:(LSWebView *)webview;
+
 @end
 
 @interface LSWebView : UIView<WKNavigationDelegate, WKUIDelegate, UIWebViewDelegate>
@@ -49,7 +78,7 @@
 @property (nonatomic, assign) BOOL showsURLInNavigationBar;
 @property (nonatomic, assign) BOOL showsPageTitleInNavigationBar;
 
-//Allow for custom activities in the browser by populating this optional array
+// Allow for custom activities in the browser by populating this optional array
 @property (nonatomic, strong) NSArray *customActivityItems;
 
 #pragma mark - Public Interface
