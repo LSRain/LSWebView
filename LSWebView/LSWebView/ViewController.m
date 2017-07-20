@@ -35,19 +35,19 @@
 #pragma mark - this is LSWebViewDelegate
 
 - (void)lswebViewDidStartLoad:(LSWebView *)webview{
-    NSLog(@"页面开始加载");
+    NSLog(@"The page starts loading...");
 }
 
 - (void)lswebView:(LSWebView *)webview shouldStartLoadWithURL:(NSURL *)URL{
-    NSLog(@"截取到URL：%@",URL);
+    NSLog(@"Intercept to URL：%@",URL);
 }
 
 - (void)lswebView:(LSWebView *)webview didFinishLoadingURL:(NSURL *)URL{
-    NSLog(@"页面加载完成");
+    NSLog(@"The page is loaded!");
 }
 
 - (void)lswebView:(LSWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
-    NSLog(@"加载出现错误");
+    NSLog(@"Loading error!");
 }
 
 - (void)didReceiveMemoryWarning {
