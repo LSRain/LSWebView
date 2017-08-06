@@ -16,9 +16,9 @@
 
 @implementation ViewController
 
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
     
     // >>>>>>> init Model >>>>>>
     LSWebObj *webObj = [LSWebObj new];
