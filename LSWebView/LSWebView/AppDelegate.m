@@ -19,9 +19,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    ViewController *root = [ViewController new];
+    UINavigationController *nav = [[UINavigationController alloc] init];
+    if ([nav respondsToSelector:@selector(setAutomaticallyAdjustsScrollViewInsets:)]) {
+        nav.automaticallyAdjustsScrollViewInsets = NO;
+    }
+    [nav pushViewController:root animated:NO];
+    
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    ViewController *vc = [ViewController new];
-    _window.rootViewController = vc;
+    _window.rootViewController = nav;
     [_window makeKeyAndVisible];
     
     return YES;

@@ -26,7 +26,7 @@
     webObj.url = @"https://www.baidu.com";
     self.title = webObj.title;
     
-    LSWebView *my = [[LSWebView alloc]initWithFrame:self.view.bounds];
+    LSWebView *my = [[LSWebView alloc]initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height)];
     [my loadURLString:webObj.url];
     [self.view addSubview:my];
     my.delegate = self;

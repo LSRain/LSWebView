@@ -57,20 +57,21 @@
 
 #pragma mark - Public Properties
 
-// delegate
+/// LSWebViewDelegate
 @property (nonatomic, weak) id <LSWebViewDelegate> delegate;
-
-// The main and only UIProgressView
+/// The main and only UIProgressView
 @property (nonatomic, strong) UIProgressView *progressView;
-// The web views
-// Depending on the version of iOS, one of these will be set
+/// The WKWebview - Depending on the version of iOS, one of these will be set
 @property (nonatomic, strong) WKWebView *wkWebView;
+/// UIWebView
 @property (nonatomic, strong) UIWebView *uiWebView;
 
 #pragma mark - Initializers view
+
 - (instancetype)initWithFrame:(CGRect)frame;
 
 #pragma mark - Static Initializers
+
 @property (nonatomic, strong) UIBarButtonItem *actionButton;
 @property (nonatomic, strong) UIColor *tintColor;
 @property (nonatomic, strong) UIColor *barTintColor;
@@ -78,27 +79,41 @@
 @property (nonatomic, assign) BOOL showsURLInNavigationBar;
 @property (nonatomic, assign) BOOL showsPageTitleInNavigationBar;
 
-// Allow for custom activities in the browser by populating this optional array
+/// Allow for custom activities in the browser by populating this optional array
 @property (nonatomic, strong) NSArray *customActivityItems;
 
 #pragma mark - Public Interface
 
+/**
+ Load a NSURLURLRequest to web view
+ Can be called any time after initialization
 
-// Load a NSURLURLRequest to web view
-// Can be called any time after initialization
+ @param request NSURLRequest
+ */
 - (void)loadRequest:(NSURLRequest *)request;
 
-// Load a NSURL to web view
-// Can be called any time after initialization
+/**
+ Load a NSURL to web view
+ Can be called any time after initialization
+
+ @param URL NSURL
+ */
 - (void)loadURL:(NSURL *)URL;
 
-// Loads a URL as NSString to web view
-// Can be called any time after initialization
+/**
+ Loads a URL as NSString to web view
+ Can be called any time after initialization
+
+ @param URLString NSString
+ */
 - (void)loadURLString:(NSString *)URLString;
 
+/**
+ Loads an string containing HTML to web view
+ Can be called any time after initialization
 
-// Loads an string containing HTML to web view
-// Can be called any time after initialization
+ @param HTMLString NSString
+ */
 - (void)loadHTMLString:(NSString *)HTMLString;
 
 @end

@@ -69,12 +69,12 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 
 #pragma mark - UIWebViewDelegate
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
+- (void)webViewDidStartLoad:(UIWebView *)webView{
     webView == self.uiWebView ? [self.delegate lswebViewDidStartLoad:self] : nil;
 }
 
-#pragma mark 监听请求
+#pragma mark - Listen to requests
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     if(webView == self.uiWebView) {
         if(![self externalAppRequiredToOpenURL:request.URL]) {
@@ -120,14 +120,14 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
 
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
     if(webView == self.wkWebView) {
-        //back delegate
+        // back delegate
         [self.delegate lswebViewDidStartLoad:self];
     }
 }
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
     if(webView == self.wkWebView) {
-        //back delegate
+        // back delegate
         [self.delegate lswebView:self didFinishLoadingURL:self.wkWebView.URL];
     }
 }
@@ -165,9 +165,8 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
     decisionHandler(WKNavigationActionPolicyAllow);
 }
 
--(BOOL)callback_webViewShouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(NSInteger)navigationType
-{
-    //back delegate
+- (BOOL)callback_webViewShouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(NSInteger)navigationType{
+    // back delegate
     [self.delegate lswebView:self shouldStartLoadWithURL:request.URL];
     
     return YES;
