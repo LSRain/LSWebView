@@ -290,7 +290,7 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
         }
         self.backgroundColor = [UIColor redColor];
         if(self.wkWebView) {
-            [self.wkWebView setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+            [self.wkWebView setFrame:self.bounds];
             [self.wkWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
             [self.wkWebView setNavigationDelegate:self];
             [self.wkWebView setUIDelegate:self];
@@ -302,7 +302,7 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
             [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:LSWebBrowserContext];
         }
         else  {
-            [self.uiWebView setFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+            [self.uiWebView setFrame:self.bounds];
             [self.uiWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
             [self.uiWebView setDelegate:self];
             [self.uiWebView setMultipleTouchEnabled:YES];
@@ -314,9 +314,14 @@ static void *LSWebBrowserContext = &LSWebBrowserContext;
         }
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         [self.progressView setTrackTintColor:[UIColor colorWithWhite:1.0f alpha:0.0f]];
-        [self.progressView setFrame:CGRectMake(0, 0, self.frame.size.width, self.progressView.frame.size.height)];
         
-        // set progress bar Color
+        /* 
+        If there is no navigation bar, then here to write like this
+        - [self.progressView setFrame:self.bounds];
+         */
+        [self.progressView setFrame:CGRectMake(0, 64, self.frame.size.width, self.progressView.frame.size.height)];
+        
+        // progress bar Color
         [self setTintColor:[UIColor colorWithRed:0.400 green:0.863 blue:0.133 alpha:1.000]];
         [self addSubview:self.progressView];
     }
