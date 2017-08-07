@@ -7,47 +7,30 @@
 //
 
 #import "ViewController.h"
-#import "LSWebObj.h"
-#import "LSWebView.h"
+#import "LSWebViewController.h"
 
-@interface ViewController ()<LSWebViewDelegate>
+
+@interface ViewController ()
 
 @end
 
 @implementation ViewController
 
 
+- (void)targetBtnClick:(UIButton *)sender{
+    [self.navigationController pushViewController:[LSWebViewController new] animated:YES];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    // >>>>>>> init Model >>>>>>
-    LSWebObj *webObj = [LSWebObj new];
-    webObj.title = @"LSRain";
-    webObj.url = @"https://www.lsrain.com";
-    self.title = webObj.title;
-    
-    LSWebView *my = [[LSWebView alloc]initWithFrame:self.view.bounds];
-    [my loadURLString:webObj.url];
-    [self.view addSubview:my];
-    my.delegate = self;
-}
-
-#pragma mark - this is LSWebViewDelegate
-
-- (void)lswebViewDidStartLoad:(LSWebView *)webview{
-    NSLog(@"The page starts loading...");
-}
-
-- (void)lswebView:(LSWebView *)webview shouldStartLoadWithURL:(NSURL *)URL{
-    NSLog(@"Intercept to URL：%@",URL);
-}
-
-- (void)lswebView:(LSWebView *)webview didFinishLoadingURL:(NSURL *)URL{
-    NSLog(@"The page is loaded!");
-}
-
-- (void)lswebView:(LSWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
-    NSLog(@"Loading error!");
+    self.title = @"LSWeb";
+    self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
+    UIButton *targetBtn = [[UIButton alloc]initWithFrame:CGRectMake(160, 200, 80, 80)];
+    [targetBtn setTitle:@"target" forState:UIControlStateNormal];
+    [targetBtn setBackgroundColor:[UIColor redColor]];
+    [self.view addSubview:targetBtn];
+    [targetBtn addTarget:self action:@selector(targetBtnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
