@@ -12,6 +12,12 @@
 
 @interface LSWebViewController ()<LSWebViewDelegate>
 
+/// back Button
+@property (nonatomic, strong) UIBarButtonItem *backItem;
+/// close Button
+@property (nonatomic, strong) UIBarButtonItem *closeItem;
+@property (nonatomic, weak) LSWebView *webView;
+
 @end
 
 @implementation LSWebViewController
@@ -28,11 +34,70 @@
 }
 
 - (void)lswebView:(LSWebView *)webview didFinishLoadingURL:(NSURL *)URL{
-    NSLog(@"The page is loaded!");
+    [webview.wkWebView evaluateJavaScript:@"document.title" completionHandler:^(id title, NSError * _Nullable error) {
+        self.title = title;
+    }];
 }
 
 - (void)lswebView:(LSWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error{
     NSLog(@"Loading error!");
+}
+
+#pragma mark - Go back to the native page
+
+- (void)closeNative{
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIBarButtonItem *)closeItem
+{
+    if (!_closeItem) {
+        _closeItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeNative)];
+        _closeItem.tintColor = [UIColor blackColor];
+    }
+    return _closeItem;
+}
+
+#pragma mark - clickBtn Method
+
+- (void)backNative{
+    if ([self.webView.wkWebView canGoBack]) {
+        [self.webView.wkWebView goBack];
+        self.navigationItem.leftBarButtonItems = @[self.backItem, self.closeItem];
+    } else {
+        [self closeNative];
+    }
+}
+
+#pragma mark - addClockButton
+
+- (void)addLeftButton
+{
+    self.navigationItem.leftBarButtonItem = self.backItem;
+}
+
+#pragma mark - lasy load
+
+- (UIBarButtonItem *)backItem
+{
+    if (!_backItem) {
+        _backItem = [[UIBarButtonItem alloc] init];
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        UIImage *image = [UIImage imageNamed:@"sy_back"];
+        [btn setImage:image forState:UIControlStateNormal];
+        [btn setTitle:@"返回" forState:UIControlStateNormal];
+        [btn addTarget:self action:@selector(backNative) forControlEvents:UIControlEventTouchUpInside];
+        [btn.titleLabel setFont:[UIFont systemFontOfSize:17]];
+        [btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [btn sizeToFit];
+        btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+        
+        // Offset15
+        btn.contentEdgeInsets = UIEdgeInsetsMake(0, -15, 0, 0);
+        btn.frame = CGRectMake(0, 0, 40, 40);
+        _backItem.customView = btn;
+    }
+    return _backItem;
 }
 
 #pragma mark - self Life cycle
@@ -42,7 +107,7 @@
     
     // >>>>>>> init Model >>>>>>
     LSWebObj *webObj = [LSWebObj new];
-    webObj.title = @"LSRain";
+//    webObj.title = @"LSRain";
     webObj.url = @"https://www.lsrain.com";
     self.title = webObj.title;
     
@@ -50,6 +115,9 @@
     [my loadURLString:webObj.url];
     [self.view addSubview:my];
     my.delegate = self;
+    
+    _webView = my;
+    [self addLeftButton];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5132C3461F392C8C00066AA9 /* LSWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5132C3451F392C8C00066AA9 /* LSWebViewController.m */; };
+		5132C3481F39326E00066AA9 /* sy_back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5132C3471F39326E00066AA9 /* sy_back@2x.png */; };
 		51A370251F205EE500C9BF7D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A370241F205EE500C9BF7D /* main.m */; };
 		51A370281F205EE500C9BF7D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A370271F205EE500C9BF7D /* AppDelegate.m */; };
 		51A3702B1F205EE500C9BF7D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 51A3702A1F205EE500C9BF7D /* ViewController.m */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		5132C3441F392C8C00066AA9 /* LSWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LSWebViewController.h; sourceTree = "<group>"; };
 		5132C3451F392C8C00066AA9 /* LSWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LSWebViewController.m; sourceTree = "<group>"; };
+		5132C3471F39326E00066AA9 /* sy_back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sy_back@2x.png"; sourceTree = "<group>"; };
 		51A370201F205EE500C9BF7D /* LSWebView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LSWebView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A370241F205EE500C9BF7D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		51A370261F205EE500C9BF7D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 		51A3703A1F20605F00C9BF7D /* LSWebView */ = {
 			isa = PBXGroup;
 			children = (
+				5132C3471F39326E00066AA9 /* sy_back@2x.png */,
 				51A3703B1F20609500C9BF7D /* LSWebView.h */,
 				51A3703C1F20609500C9BF7D /* LSWebView.m */,
 				51A3703E1F20861A00C9BF7D /* LSWebObj.h */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51A370331F205EE500C9BF7D /* LaunchScreen.storyboard in Resources */,
+				5132C3481F39326E00066AA9 /* sy_back@2x.png in Resources */,
 				51A370301F205EE500C9BF7D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
