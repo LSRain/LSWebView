@@ -1,5 +1,5 @@
 # LSWebView
-Encapsulate the WKWebView and quickly browse the web(WKWebView封装,快速浏览网页)
+Encapsulate the WKWebView and quickly browse the web(Web container. WKWebView, UIWebView package)
 
 ## Introduction
 This is a tool wrapper from `WKWebView` that you can use to quickly load Url resources
@@ -45,3 +45,4 @@ my.delegate = self;
 
 ## Thanks
 代码参考了[ZLCWebView](https://github.com/lczhai/ZLCWebView)
+
