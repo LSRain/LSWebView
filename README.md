@@ -44,5 +44,5 @@ my.delegate = self;
 [轮子之LSWebView(WKWebView封装)](https://www.lsrain.com/2017/07/20/iOS/轮子之%60LSWebView%60(WKWebView封装)/)
 
 ## Thanks
-代码参考了[ZLCWebView](https://github.com/lczhai/ZLCWebView)
+Some implement logical references from [ZLCWebView](https://github.com/lczhai/ZLCWebView).
 
